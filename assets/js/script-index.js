@@ -5,6 +5,7 @@ $(document).ready( function(){
   renderActivities(activities);
   $('.js-back').hide();
   printNews();
+  printActivity();
 
 });
 
@@ -60,5 +61,14 @@ function renderActivity(recipe) {
    $('.wrapper-message').hide();
 	
 }
+
+function printActivity () {
+  _.each(activities, function (data, index) {
+    console.log(data.image);
+    $('.list-activities').append('<a href="#" class="item-activity"><span class="attribution"><span class="avatar"><img src="'+data.userAvatar+'" class="image-avatar"></span><span class="meta"><span class="author">'+data.userName+'</span> made <span class="recipe">'+data.recipeName+'</span>: '+data.text+'<span class="location">&mdash; '+data.place+'</span></span></span><div class="bg-image"></div></a>');  
+    $('.list-activities').find('.bg-image').css('background-image', 'url(assets/'+data.image+')');
+  })
+}
+
 
 
